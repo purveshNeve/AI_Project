@@ -16,9 +16,9 @@ export default function Card({
     <div
       {...props}
       className={[
-        'rounded-2xl border bg-white p-5 text-slate-900 shadow-2xs transition-all duration-200',
-        gradientBorder ? 'border-purple-200/80 bg-gradient-to-b from-white via-white to-purple-50/20' : 'border-slate-200/80',
-        hoverEffect ? 'hover:-translate-y-0.5 hover:border-slate-300 hover:shadow-md' : '',
+        'rounded-xl border bg-[#FCFAF7] p-5 text-[#2F241F] shadow-xs transition-all duration-200',
+        gradientBorder ? 'border-[#C4B5A8]' : 'border-[#DED4CA]',
+        hoverEffect ? 'hover:-translate-y-0.5 hover:border-[#C4B5A8] hover:shadow-sm' : '',
         className,
       ]
         .filter(Boolean)

@@ -77,7 +77,7 @@ export default function NewAnalysis() {
             <h1 className="text-2xl font-bold tracking-tight text-slate-900 font-sans">
               Upload Resume for AI Parsing
             </h1>
-            <Badge variant="ai" icon={<Sparkles className="h-3.5 w-3.5 text-purple-600" />}>
+            <Badge variant="ai" icon={<Sparkles className="h-3.5 w-3.5 text-[#6F4E37]" />}>
               Deep Extraction
             </Badge>
           </div>
@@ -91,7 +91,7 @@ export default function NewAnalysis() {
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
         {/* Upload Zone Card */}
         <div className="lg:col-span-2">
-          <Card className="p-8 border-purple-200/80 bg-gradient-to-b from-white via-white to-purple-50/20">
+          <Card className="p-8 border-[#D8C8BB]/80 bg-gradient-to-b from-white via-white to-[#F5EFE6]/40">
             <ResumeUploader
               onUpload={setResumeFile}
               onClear={() => setResumeFile(null)}
@@ -124,15 +124,19 @@ export default function NewAnalysis() {
 
       {analysis && (
         <section className="mt-8 space-y-5" aria-label="Resume match analysis results">
-          <Card className="border-purple-200/80 bg-gradient-to-r from-white to-purple-50/40 p-6">
+          <Card className="border-[#D8C8BB] bg-gradient-to-r from-white to-[#F8F3EE] p-6">
             <div className="flex flex-wrap items-center justify-between gap-3">
               <div>
-                <h2 className="text-lg font-bold text-slate-900">Overall Match Score</h2>
+                <h2 className="text-lg font-bold text-slate-900">
+                  Overall Match Score
+                </h2>
+
                 <p className="mt-1 text-xs text-slate-600">
                   Average of the deterministic scores for {analysis.requirements.length} extracted job requirements.
                 </p>
               </div>
-              <div className="text-3xl font-extrabold text-purple-700">
+
+              <div className="text-3xl font-extrabold text-[#6B4632]">
                 {analysis.overall_score.toFixed(1)}%
               </div>
             </div>
@@ -152,7 +156,7 @@ export default function NewAnalysis() {
                   <div className="flex flex-wrap items-start justify-between gap-3">
                     <div className="min-w-0">
                       <h3 className="text-sm font-semibold text-slate-900">{item.requirement}</h3>
-                      <p className="mt-1 text-xs font-medium text-purple-700">{item.match_level}</p>
+                      <p className="mt-1 text-xs font-medium text-[#6B4632]">{item.match_level}</p>
                     </div>
                     <span className="shrink-0 text-lg font-bold text-slate-900">
                       {item.score.toFixed(1)}%

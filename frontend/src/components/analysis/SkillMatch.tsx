@@ -13,22 +13,31 @@ export default function SkillMatch({ skills, matchedSkills, missingSkills }: Ski
   const matchRatio = Math.round((matchedSkills.length / Math.max(skills.length, 1)) * 100)
 
   return (
-    <Card className="p-6 border-slate-200/80">
+    <Card className="p-6 border-[#D8C8BB]/80">
       <div className="flex items-center justify-between mb-4">
         <div>
           <h3 className="text-sm font-bold text-slate-900 flex items-center gap-2">
-            <Layers className="h-4 w-4 text-purple-600" />
+            <Layers className="h-4 w-4 text-[#6F4E37]" />
             <span>Technical Skill Matrix</span>
           </h3>
-          <p className="text-xs text-slate-500 mt-0.5">Automated skill matching against target job criteria</p>
+          <p className="text-xs text-slate-500 mt-0.5">
+            Automated skill matching against target job criteria
+          </p>
         </div>
+
         <Badge variant="primary" className="font-semibold">
           {matchedSkills.length} / {skills.length} Matched
         </Badge>
       </div>
 
       <div className="mb-5">
-        <ProgressBar value={matchRatio} max={100} showValue label="Skill Coverage Ratio" size="md" />
+        <ProgressBar
+          value={matchRatio}
+          max={100}
+          showValue
+          label="Skill Coverage Ratio"
+          size="md"
+        />
       </div>
 
       <div className="space-y-4">
@@ -38,6 +47,7 @@ export default function SkillMatch({ skills, matchedSkills, missingSkills }: Ski
             <CheckCircle2 className="h-3.5 w-3.5" />
             Verified Matched Skills ({matchedSkills.length})
           </h4>
+
           <div className="flex flex-wrap gap-2">
             {matchedSkills.map((skill) => (
               <span
@@ -58,6 +68,7 @@ export default function SkillMatch({ skills, matchedSkills, missingSkills }: Ski
               <AlertTriangle className="h-3.5 w-3.5" />
               Missing or Desirable Skills ({missingSkills.length})
             </h4>
+
             <div className="flex flex-wrap gap-2">
               {missingSkills.map((skill) => (
                 <span

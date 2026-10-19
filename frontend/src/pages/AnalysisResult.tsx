@@ -55,7 +55,7 @@ export default function AnalysisResult() {
     return (
       <PageContainer>
         <div className="py-24 text-center">
-          <LoadingSpinner size="lg" color="purple" label="Loading candidate intelligence..." />
+          <LoadingSpinner size="lg" color="brown" label="Loading candidate intelligence..." />
           <p className="text-xs text-slate-500 mt-3 font-medium">Fetching the saved candidate profile...</p>
         </div>
       </PageContainer>
@@ -93,7 +93,7 @@ export default function AnalysisResult() {
               <h1 className="text-xl md:text-2xl font-bold tracking-tight text-slate-900 font-sans">
                 {candidate.candidateName}
               </h1>
-              <Badge variant="ai" icon={<Sparkles className="h-3 w-3 text-purple-600" />}>
+              <Badge variant="ai" icon={<Sparkles className="h-3 w-3 text-[#6F4E37]" />}>
                 AI Profile
               </Badge>
             </div>
@@ -124,7 +124,7 @@ export default function AnalysisResult() {
           <Card className="p-6 border-slate-200/80">
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-100 pb-5 mb-5">
               <div className="flex items-center gap-4">
-                <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-tr from-purple-600 via-indigo-600 to-pink-500 text-white font-extrabold text-xl shadow-md">
+                <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-tr from-[#6B4632] via-[#8B5E3C] to-[#B08968] text-white font-extrabold text-xl shadow-md">
                   {candidate.candidateName
                     .split(' ')
                     .map((n) => n[0])
@@ -134,7 +134,7 @@ export default function AnalysisResult() {
                 </div>
                 <div>
                   <h2 className="text-lg font-bold text-slate-900">{candidate.candidateName}</h2>
-                  <div className="text-xs font-semibold text-purple-700 mt-0.5">{candidate.jobTitle}</div>
+                  <div className="text-xs font-semibold text-[#6B4632] mt-0.5">{candidate.jobTitle}</div>
                   <div className="flex items-center gap-3 text-xs text-slate-500 mt-1">
                     <span className="flex items-center gap-1">
                       <MapPin className="h-3.5 w-3.5 text-slate-400" />
@@ -150,11 +150,11 @@ export default function AnalysisResult() {
                 </div>
               </div>
 
-              <div className="flex sm:flex-col items-center sm:items-end justify-between gap-2 bg-purple-50/60 p-3 rounded-xl border border-purple-100">
+              <div className="flex sm:flex-col items-center sm:items-end justify-between gap-2 bg-[#F5EFE6]/60 p-3 rounded-xl border border-[#E5D8CE]">
                 <span className="text-[11px] font-semibold text-slate-500 uppercase tracking-wider">
                   Resume Status
                 </span>
-                <span className="text-sm font-extrabold text-purple-700">
+                <span className="text-sm font-extrabold text-[#6B4632]">
                   {candidate.status === 'parsed' ? 'Parsed' : candidate.status}
                 </span>
               </div>
@@ -167,13 +167,13 @@ export default function AnalysisResult() {
                   href={`mailto:${candidate.email}`}
                   className="flex items-center gap-1.5 rounded-lg bg-slate-50 px-3 py-1.5 border border-slate-200/60 hover:bg-slate-100 transition-colors"
                 >
-                  <Mail className="h-3.5 w-3.5 text-purple-600" />
+                  <Mail className="h-3.5 w-3.5 text-[#8B5E3C]" />
                   <span>{candidate.email}</span>
                 </a>
               )}
               {candidate.phone && (
                 <div className="flex items-center gap-1.5 rounded-lg bg-slate-50 px-3 py-1.5 border border-slate-200/60">
-                  <Phone className="h-3.5 w-3.5 text-purple-600" />
+                  <Phone className="h-3.5 w-3.5 text-[#8B5E3C]" />
                   <span>{candidate.phone}</span>
                 </div>
               )}
@@ -184,7 +184,7 @@ export default function AnalysisResult() {
                   rel="noreferrer"
                   className="flex items-center gap-1.5 rounded-lg bg-slate-50 px-3 py-1.5 border border-slate-200/60 hover:bg-slate-100 transition-colors"
                 >
-                  <Globe className="h-3.5 w-3.5 text-purple-600" />
+                  <Globe className="h-3.5 w-3.5 text-[#8B5E3C]" />
                   <span>{candidate.linkedin}</span>
                 </a>
               )}

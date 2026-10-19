@@ -1,29 +1,42 @@
 @import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+@theme {
+  --color-slate-50: #FCFAF7;
+  --color-slate-100: #F5EFE6;
+  --color-slate-200: #EDE6DE;
+  --color-slate-300: #D8C8BB;
+  --color-slate-400: #B89B85;
+  --color-slate-500: #A08C81;
+  --color-slate-600: #75685F;
+  --color-slate-700: #5C483A;
+  --color-slate-800: #3B2B22;
+  --color-slate-900: #2F241F;
+  --color-slate-950: #211812;
+}
 
 @layer base {
   :root {
-    --font-sans: 'Plus Jakarta Sans', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    
-    /* Brand Color System */
-    --color-primary: #7c3aed;
-    --color-primary-hover: #6d28d9;
-    --color-secondary: #8b5cf6;
-    --color-accent: #ec4899;
-    
-    --color-bg-app: #f8fafc;
-    --color-bg-card: #ffffff;
-    --color-border: #e2e8f0;
-    --color-border-subtle: #f1f5f9;
-    
-    --color-text-main: #0f172a;
-    --color-text-muted: #64748b;
-    --color-text-subtle: #94a3b8;
+    --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+
+    /* Warm coffee & cream palette */
+    --color-bg-app:       #F7F3EE;
+    --color-bg-secondary: #EFE8DF;
+    --color-surface:      #FCFAF7;
+    --color-text-main:    #2F241F;
+    --color-text-muted:   #75685F;
+    --color-text-subtle:  #A08C81;
+    --color-accent:       #8B5E3C;
+    --color-accent-dark:  #4A3023;
+    --color-border:       #DED4CA;
+    --color-border-light: #EDE6DE;
+    --color-hover:        #E9DFD5;
   }
 
   body {
     font-family: var(--font-sans);
-    background-color: #f8fafc;
-    color: #0f172a;
+    background-color: #F7F3EE;
+    color: #2F241F;
     min-height: 100vh;
     margin: 0;
     padding: 0;
@@ -39,89 +52,47 @@
   }
 }
 
-/* AI Gradient Utilities */
-.bg-gradient-primary {
-  background: linear-gradient(135deg, #7c3aed 0%, #8b5cf6 50%, #ec4899 100%);
-}
-
-.bg-gradient-primary-hover:hover {
-  background: linear-gradient(135deg, #6d28d9 0%, #7c3aed 50%, #db2777 100%);
-}
-
-.bg-gradient-subtle {
-  background: linear-gradient(135deg, rgba(124, 58, 237, 0.06) 0%, rgba(236, 72, 153, 0.04) 100%);
-}
-
-.text-gradient {
-  background: linear-gradient(135deg, #7c3aed 0%, #a855f7 50%, #ec4899 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-.text-gradient-purple {
-  background: linear-gradient(135deg, #6d28d9 0%, #9333ea 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-.border-gradient {
-  border-image: linear-gradient(135deg, #7c3aed, #ec4899) 1;
-}
-
 /* Custom Scrollbars */
 ::-webkit-scrollbar {
   width: 6px;
   height: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: #f1f5f9;
+  background: #EFE8DF;
 }
 ::-webkit-scrollbar-thumb {
-  background: #cbd5e1;
+  background: #C4B5A8;
   border-radius: 9999px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #94a3b8;
+  background: #A08C81;
 }
 
-/* Keyframe Animations */
+/* Shimmer loading animation */
 @keyframes shimmer {
-  0% {
-    background-position: -200% 0;
-  }
-  100% {
-    background-position: 200% 0;
-  }
+  0%   { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
 }
-
 .animate-shimmer {
-  background: linear-gradient(90deg, #f1f5f9 25%, #e2e8f0 37%, #f1f5f9 63%);
+  background: linear-gradient(90deg, #EFE8DF 25%, #E9DFD5 37%, #EFE8DF 63%);
   background-size: 200% 100%;
   animation: shimmer 1.5s infinite;
 }
 
+/* Subtle pulse animation */
 @keyframes pulse-subtle {
-  0%, 100% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0.6;
-  }
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.6; }
 }
-
 .animate-pulse-subtle {
   animation: pulse-subtle 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
 }
 
+/* Float animation - gentle */
 @keyframes float {
-  0%, 100% {
-    transform: translateY(0px);
-  }
-  50% {
-    transform: translateY(-4px);
-  }
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-3px); }
 }
-
 .animate-float {
   animation: float 3s ease-in-out infinite;
 }

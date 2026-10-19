@@ -19,9 +19,9 @@ export function formatScoreTier(score: number): MatchTier {
   if (score >= 75) {
     return {
       label: 'Good Match',
-      color: 'text-purple-700',
-      bg: 'bg-purple-50',
-      border: 'border-purple-200',
+      color: 'text-[#6B4632]',
+      bg: 'bg-[#F5EFE6]',
+      border: 'border-[#D8C8BB]',
       badgeVariant: 'primary',
     }
   }

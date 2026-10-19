@@ -37,11 +37,11 @@ export default function AnalysisProgress({ onComplete }: AnalysisProgressProps) 
   }, [onComplete, steps.length])
 
   return (
-    <Card className="max-w-xl mx-auto p-8 border-purple-200 shadow-md bg-gradient-to-b from-white to-purple-50/20 text-center">
+    <Card className="max-w-xl mx-auto p-8 border-[#D8C8BB] shadow-md bg-gradient-to-b from-white to-[#F8F3EE]/70 text-center">
       {/* Animated AI Spinner */}
-      <div className="relative flex h-20 w-20 items-center justify-center rounded-3xl bg-gradient-to-tr from-purple-600 via-indigo-600 to-pink-500 text-white shadow-lg mx-auto mb-6">
+      <div className="relative flex h-20 w-20 items-center justify-center rounded-3xl bg-[#6B4632] text-white shadow-lg mx-auto mb-6">
         <Sparkles className="h-10 w-10 animate-spin" />
-        <div className="absolute -inset-1 rounded-3xl bg-gradient-to-r from-purple-600 to-pink-500 opacity-30 blur-md -z-10" />
+        <div className="absolute -inset-1 rounded-3xl bg-[#8B5E3C] opacity-20 blur-md -z-10" />
       </div>
 
       <h2 className="text-xl font-bold text-slate-900">AI is analyzing your resume...</h2>
@@ -54,7 +54,7 @@ export default function AnalysisProgress({ onComplete }: AnalysisProgressProps) 
       </div>
 
       {/* Steps List */}
-      <div className="space-y-3 text-left border-t border-slate-100 pt-6">
+      <div className="space-y-3 text-left border-t border-[#E5D8CE] pt-6">
         {steps.map((step, idx) => {
           const isDone = idx < currentStep || progress === 100
           const isCurrent = idx === currentStep && progress < 100
@@ -64,7 +64,7 @@ export default function AnalysisProgress({ onComplete }: AnalysisProgressProps) 
               key={step.title}
               className={[
                 'flex items-center gap-3 p-3 rounded-xl transition-all',
-                isCurrent ? 'bg-purple-50 border border-purple-200' : 'bg-slate-50/60',
+                isCurrent ? 'bg-[#F8F3EE] border border-[#D8C8BB]' : 'bg-[#FDFBF8]',
               ]
                 .filter(Boolean)
                 .join(' ')}
@@ -72,7 +72,7 @@ export default function AnalysisProgress({ onComplete }: AnalysisProgressProps) 
               {isDone ? (
                 <CheckCircle2 className="h-5 w-5 text-emerald-600 shrink-0" />
               ) : isCurrent ? (
-                <BrainCircuit className="h-5 w-5 text-purple-600 animate-pulse shrink-0" />
+                <BrainCircuit className="h-5 w-5 text-[#6B4632] animate-pulse shrink-0" />
               ) : (
                 <Clock className="h-5 w-5 text-slate-300 shrink-0" />
               )}
@@ -81,7 +81,7 @@ export default function AnalysisProgress({ onComplete }: AnalysisProgressProps) 
                 <h4
                   className={[
                     'text-xs font-semibold',
-                    isDone ? 'text-slate-900' : isCurrent ? 'text-purple-900 font-bold' : 'text-slate-400',
+                    isDone ? 'text-slate-900' : isCurrent ? 'text-[#6B4632] font-bold' : 'text-slate-400',
                   ]
                     .filter(Boolean)
                     .join(' ')}

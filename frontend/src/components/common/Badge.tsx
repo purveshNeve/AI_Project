@@ -9,23 +9,23 @@ export interface BadgeProps extends HTMLAttributes<HTMLSpanElement> {
 }
 
 const variantClasses: Record<BadgeVariant, string> = {
-  default: 'bg-slate-100 text-slate-700 border-slate-200/60',
-  primary: 'bg-purple-50 text-purple-700 border-purple-200/70',
-  success: 'bg-emerald-50 text-emerald-700 border-emerald-200/70',
-  warning: 'bg-amber-50 text-amber-800 border-amber-200/70',
-  danger: 'bg-rose-50 text-rose-700 border-rose-200/70',
-  gradient: 'bg-gradient-to-r from-purple-600 via-indigo-600 to-pink-500 text-white border-transparent shadow-2xs',
-  ai: 'bg-purple-50/90 text-purple-700 border-purple-200/80 shadow-2xs',
+  default:  'bg-[#EFE8DF] text-[#75685F] border-[#DED4CA]',
+  primary:  'bg-[#F0E6DC] text-[#8B5E3C] border-[#DED4CA]',
+  success:  'bg-emerald-50 text-emerald-700 border-emerald-200/70',
+  warning:  'bg-amber-50 text-amber-800 border-amber-200/70',
+  danger:   'bg-rose-50 text-rose-700 border-rose-200/70',
+  gradient: 'bg-[#8B5E3C] text-white border-transparent shadow-2xs',
+  ai:       'bg-[#F0E6DC] text-[#8B5E3C] border-[#DED4CA]',
 }
 
 const dotColors: Record<BadgeVariant, string> = {
-  default: 'bg-slate-400',
-  primary: 'bg-purple-500',
-  success: 'bg-emerald-500',
-  warning: 'bg-amber-500',
-  danger: 'bg-rose-500',
+  default:  'bg-[#A08C81]',
+  primary:  'bg-[#8B5E3C]',
+  success:  'bg-emerald-500',
+  warning:  'bg-amber-500',
+  danger:   'bg-rose-500',
   gradient: 'bg-white',
-  ai: 'bg-purple-600',
+  ai:       'bg-[#8B5E3C]',
 }
 
 export default function Badge({

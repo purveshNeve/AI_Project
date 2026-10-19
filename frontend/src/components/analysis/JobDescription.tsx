@@ -77,9 +77,9 @@ export default function JobDescription({
   const triggerBrowse = () => fileInputRef.current?.click()
 
   return (
-    <Card className="border-purple-200/80 bg-gradient-to-b from-white via-white to-purple-50/20 p-6">
+    <Card className="border-[#D8C8BB]/80 bg-gradient-to-b from-white via-white to-[#F5EFE6]/40 p-6">
       <div className="mb-4 flex items-center gap-2">
-        <div className="flex h-8 w-8 items-center justify-center rounded-xl bg-purple-100 text-purple-700">
+        <div className="flex h-8 w-8 items-center justify-center rounded-xl bg-[#F2E9E0] text-[#6F4E37]">
           <Target className="h-4 w-4" />
         </div>
         <div>
@@ -106,16 +106,16 @@ export default function JobDescription({
           className={[
             'relative flex cursor-pointer select-none flex-col items-center justify-center rounded-3xl border-2 border-dashed p-8 text-center transition-all duration-200',
             isDragOver
-              ? 'scale-[1.01] border-purple-500 bg-purple-100/50 shadow-lg'
+              ? 'border-[#8B5E3C] bg-[#FCFAF7] scale-[1.01] shadow-lg'
               : selectedFile
-                ? 'border-purple-300 bg-purple-50/40'
-                : 'border-purple-200/80 bg-purple-50/20 hover:border-purple-400 hover:bg-purple-50/50 hover:shadow-sm',
+                ? 'border-[#C4B5A8] bg-[#FCFAF7]'
+                : 'border-[#DED4CA] bg-[#FCFAF7] hover:border-[#C4B5A8] hover:bg-[#F2E9E0] hover:shadow-sm',
           ].join(' ')}
         >
           {!selectedFile ? (
             <>
-              <div className="mb-5 flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-tr from-purple-600 via-indigo-600 to-pink-500 text-white shadow-md">
-                <UploadCloud className="h-8 w-8" />
+              <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-white border border-[#8B5E3C] text-[#8B5E3C] shadow-sm mb-5 animate-float">
+                <UploadCloud className="h-8 w-8" strokeWidth={1.8} />
               </div>
 
               <h4 className="text-lg font-bold tracking-tight text-slate-900">
@@ -145,21 +145,24 @@ export default function JobDescription({
               </div>
             </>
           ) : (
-            <div className="w-full rounded-2xl border border-purple-200 bg-white p-5 text-left shadow-sm">
+            <div className="w-full rounded-2xl border border-[#D8C8BB] bg-white p-5 text-left shadow-sm">
               <div className="flex items-start justify-between">
                 <div className="flex min-w-0 items-center gap-3">
-                  <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-purple-100 text-purple-700">
+                  <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-[#B89B85] bg-white text-[#6B4632]">
                     <FileText className="h-6 w-6" />
                   </div>
+
                   <div className="min-w-0">
                     <h4 className="truncate text-sm font-bold text-slate-900">
                       {selectedFile.name}
                     </h4>
+
                     <p className="text-xs text-slate-600">
                       {(selectedFile.size / (1024 * 1024)).toFixed(2)} MB · PDF ready
                     </p>
                   </div>
                 </div>
+
                 <button
                   type="button"
                   onClick={(event) => {
@@ -167,7 +170,7 @@ export default function JobDescription({
                     clearFile()
                   }}
                   aria-label="Remove job description PDF"
-                  className="rounded-lg p-1 text-slate-400 transition-colors hover:bg-slate-100 hover:text-rose-600"
+                  className="rounded-lg p-1 text-slate-400 transition-colors hover:bg-slate-100 hover:text-[#8B5E3C]"
                 >
                   <X className="h-4 w-4" />
                 </button>
@@ -189,10 +192,11 @@ export default function JobDescription({
           Secure file handling
         </span>
         <span className="flex items-center gap-1.5">
-          <Sparkles className="h-4 w-4 text-purple-600" />
+          <Sparkles className="h-4 w-4 text-[#6F4E37]" />
           Candidate match target
         </span>
       </div>
+
       <div className="mt-4">
         <Button
           variant="primary"
@@ -201,17 +205,26 @@ export default function JobDescription({
           loading={isSubmitting}
           disabled={!selectedFile || !canSubmit || isSubmitting}
           onClick={() => selectedFile && onSubmit?.(selectedFile)}
-          >
-            <span>Submit for analysis</span>
+        >
+          <span>Submit for analysis</span>
         </Button>
+
         {!canSubmit && (
-          <p className="mt-2 text-xs text-slate-500">Select a resume before submitting.</p>
+          <p className="mt-2 text-xs text-slate-500">
+            Select a resume before submitting.
+          </p>
         )}
+
         {submitError && (
-          <p role="alert" className="mt-2 text-xs font-medium text-rose-600">{submitError}</p>
+          <p role="alert" className="mt-2 text-xs font-medium text-rose-600">
+            {submitError}
+          </p>
         )}
+
         {submitMessage && (
-          <p role="status" className="mt-2 text-xs font-medium text-emerald-700">{submitMessage}</p>
+          <p role="status" className="mt-2 text-xs font-medium text-emerald-700">
+            {submitMessage}
+          </p>
         )}
       </div>
     </Card>

@@ -29,14 +29,14 @@ export default function ProgressBar({
 
   const heightClasses = {
     sm: 'h-1.5',
-    md: 'h-2.5',
-    lg: 'h-3.5',
+    md: 'h-2',
+    lg: 'h-3',
   }
 
   return (
     <div className="w-full">
       {(label || showValue) && (
-        <div className="mb-1.5 flex items-center justify-between text-xs font-medium text-slate-600">
+        <div className="mb-1.5 flex items-center justify-between text-xs font-medium text-[#75685F]">
           <span>{label}</span>
           {showValue && <span>{percentage !== undefined ? `${Math.round(percentage)}%` : '--'}</span>}
         </div>
@@ -49,7 +49,7 @@ export default function ProgressBar({
         aria-valuemax={boundedMax}
         aria-valuenow={boundedValue}
         className={[
-          'w-full overflow-hidden rounded-full bg-slate-100/90 p-0.5 border border-slate-200/50',
+          'w-full overflow-hidden rounded-full bg-[#EFE8DF] border border-[#DED4CA]',
           heightClasses[size],
           className,
         ]
@@ -60,8 +60,8 @@ export default function ProgressBar({
           className={[
             'h-full rounded-full transition-all duration-500 ease-out',
             gradient
-              ? 'bg-gradient-to-r from-purple-600 via-indigo-600 to-pink-500'
-              : 'bg-purple-600',
+              ? 'bg-[#8B5E3C]'
+              : 'bg-[#8B5E3C]',
             percentage === undefined ? 'w-1/3 animate-pulse' : '',
           ]
             .filter(Boolean)

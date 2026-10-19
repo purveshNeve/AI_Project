@@ -115,7 +115,7 @@ export default function UploadResume() {
       </div>
 
       <div className="mx-auto grid max-w-4xl grid-cols-1 gap-6 lg:grid-cols-3">
-        <Card className="border-purple-200/80 bg-gradient-to-b from-white via-white to-purple-50/20 p-6 sm:p-8 lg:col-span-2">
+        <Card className="border-[#D8C8BB]/80 bg-gradient-to-b from-white via-white to-[#F5EFE6]/40 p-6 sm:p-8 lg:col-span-2">
           <form onSubmit={handleSubmit}>
             <ResumeUploader
               onUpload={handleFileSelect}
@@ -141,7 +141,7 @@ export default function UploadResume() {
               </Button>
 
               {isUploading && (
-                <p role="status" className="text-xs font-medium text-purple-700">
+                <p role="status" className="text-xs font-medium text-[#6B4632]">
                   Uploading and parsing your PDF. Please keep this page open.
                 </p>
               )}

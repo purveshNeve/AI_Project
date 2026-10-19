@@ -13,7 +13,7 @@ export default function EvidenceCard({ workHistory, education }: EvidenceCardPro
       {/* Work History */}
       <Card className="p-6 border-slate-200/80">
         <h3 className="text-sm font-bold text-slate-900 flex items-center gap-2 mb-4">
-          <Briefcase className="h-4 w-4 text-purple-600" />
+          <Briefcase className="h-4 w-4 text-[#6F4E37]" />
           <span>Extracted Work History ({workHistory.length})</span>
         </h3>
 
@@ -23,10 +23,10 @@ export default function EvidenceCard({ workHistory, education }: EvidenceCardPro
           <div className="space-y-5 relative before:absolute before:inset-0 before:left-3.5 before:w-0.5 before:bg-slate-200/60">
             {workHistory.map((work) => (
               <div key={work.id} className="relative pl-8">
-                <div className="absolute left-1.5 top-1.5 h-4 w-4 rounded-full border-2 border-purple-600 bg-white shadow-2xs" />
+                <div className="absolute left-1.5 top-1.5 h-4 w-4 rounded-full border-2 border-[#6F4E37] bg-white shadow-2xs" />
                 <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1">
                   <h4 className="text-sm font-bold text-slate-900">{work.title}</h4>
-                  <span className="text-xs font-semibold text-purple-700 bg-purple-50 border border-purple-100 px-2 py-0.5 rounded-md self-start sm:self-auto">
+                  <span className="text-xs font-semibold text-[#6F4E37] bg-[#F5EFE6] border border-[#E5D5C3] px-2 py-0.5 rounded-md self-start sm:self-auto">
                     {work.duration}
                   </span>
                 </div>
@@ -55,7 +55,7 @@ export default function EvidenceCard({ workHistory, education }: EvidenceCardPro
       {/* Education */}
       <Card className="p-6 border-slate-200/80">
         <h3 className="text-sm font-bold text-slate-900 flex items-center gap-2 mb-4">
-          <GraduationCap className="h-4 w-4 text-purple-600" />
+          <GraduationCap className="h-4 w-4 text-[#6F4E37]" />
           <span>Education & Degrees ({education.length})</span>
         </h3>
 
@@ -69,7 +69,7 @@ export default function EvidenceCard({ workHistory, education }: EvidenceCardPro
                 <p className="text-xs text-slate-600 mt-0.5 font-medium">{edu.institution}</p>
                 <div className="flex items-center justify-between text-[11px] text-slate-400 mt-2">
                   <span>Graduated {edu.year}</span>
-                  {edu.gpa && <span className="font-semibold text-purple-700">GPA {edu.gpa}</span>}
+                  {edu.gpa && <span className="font-semibold text-[#6F4E37]">GPA {edu.gpa}</span>}
                 </div>
               </div>
             ))}

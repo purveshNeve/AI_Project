@@ -21,9 +21,9 @@ export default function StatsCard({
   description,
 }: StatsCardProps) {
   return (
-    <Card hoverEffect className="relative overflow-hidden group border-slate-200/80">
+    <Card hoverEffect className="relative overflow-hidden group border-[#DED4CA]">
       <div className="flex items-start justify-between">
-        <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-purple-50 text-purple-600 border border-purple-100 group-hover:bg-gradient-to-tr group-hover:from-purple-600 group-hover:to-pink-500 group-hover:text-white transition-all duration-300">
+        <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-[#EFE8DF] text-[#8B5E3C] border border-[#DED4CA] group-hover:bg-[#8B5E3C] group-hover:text-white transition-all duration-300">
           {icon}
         </div>
 
@@ -45,17 +45,17 @@ export default function StatsCard({
       </div>
 
       <div className="mt-4">
-        <div className="text-2xl font-bold tracking-tight text-slate-900 font-sans">
+        <div className="text-2xl font-bold tracking-tight text-[#2F241F] font-sans">
           {value}
         </div>
-        <div className="text-xs font-medium text-slate-600 mt-1">{title}</div>
+        <div className="text-xs font-medium text-[#75685F] mt-1">{title}</div>
         {description && (
-          <div className="text-[11px] text-slate-400 mt-0.5">{description}</div>
+          <div className="text-[11px] text-[#A08C81] mt-0.5">{description}</div>
         )}
       </div>
 
-      {/* Decorative gradient highlight line */}
-      <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-purple-500 via-indigo-500 to-pink-500 opacity-0 group-hover:opacity-100 transition-opacity" />
+      {/* Subtle warm accent line on hover */}
+      <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-[#8B5E3C] opacity-0 group-hover:opacity-100 transition-opacity" />
     </Card>
   )
 }

@@ -4,7 +4,7 @@ import Badge from '../common/Badge'
 import Button from '../common/Button'
 import { formatScoreTier } from '../../utils/formatScore'
 import { formatDate } from '../../utils/formatDate'
-import { Eye, Trash2, Sparkles } from 'lucide-react'
+import { Eye, Trash2 } from 'lucide-react'
 
 export interface AnalysisRowProps {
   resume: CandidateResume
@@ -15,11 +15,11 @@ export default function AnalysisRow({ resume, onDelete }: AnalysisRowProps) {
   const tier = resume.overallScore != null ? formatScoreTier(resume.overallScore) : null
 
   return (
-    <tr className="border-b border-slate-100 hover:bg-purple-50/20 transition-colors group">
+    <tr className="border-b border-[#EDE6DE] hover:bg-[#F0E6DC]/20 transition-colors group">
       {/* Candidate Name & File */}
       <td className="py-3.5 pl-6 pr-4">
         <div className="flex items-center gap-3">
-          <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-purple-50 text-purple-700 font-bold text-xs border border-purple-100">
+          <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-[#EFE8DF] text-[#8B5E3C] font-bold text-xs border border-[#DED4CA]">
             {resume.candidateName
               .split(' ')
               .map((n) => n[0])
@@ -30,11 +30,11 @@ export default function AnalysisRow({ resume, onDelete }: AnalysisRowProps) {
           <div>
             <Link
               to={`/analysis/${resume.id}`}
-              className="text-xs font-bold text-slate-900 hover:text-purple-600 transition-colors"
+              className="text-xs font-semibold text-[#2F241F] hover:text-[#8B5E3C] transition-colors"
             >
               {resume.candidateName}
             </Link>
-            <div className="text-[11px] text-slate-400 font-mono mt-0.5 truncate max-w-[180px]">
+            <div className="text-[11px] text-[#A08C81] font-mono mt-0.5 truncate max-w-[180px]">
               {resume.fileName}
             </div>
           </div>
@@ -42,9 +42,9 @@ export default function AnalysisRow({ resume, onDelete }: AnalysisRowProps) {
       </td>
 
       {/* Target Job Title */}
-      <td className="py-3.5 px-4 text-xs font-medium text-slate-700">
+      <td className="py-3.5 px-4 text-xs font-medium text-[#2F241F]">
         <div>{resume.jobTitle}</div>
-        <div className="text-[11px] text-slate-400">
+        <div className="text-[11px] text-[#A08C81]">
           {resume.experienceYears != null
             ? `${resume.experienceYears} Yrs Experience`
             : 'Experience not specified'}
@@ -57,13 +57,13 @@ export default function AnalysisRow({ resume, onDelete }: AnalysisRowProps) {
           {resume.skills.slice(0, 3).map((skill) => (
             <span
               key={skill}
-              className="inline-flex items-center rounded-md bg-slate-100 px-2 py-0.5 text-[10px] font-medium text-slate-700"
+              className="inline-flex items-center rounded-md bg-[#EFE8DF] px-2 py-0.5 text-[10px] font-medium text-[#75685F]"
             >
               {skill}
             </span>
           ))}
           {resume.skills.length > 3 && (
-            <span className="text-[10px] text-slate-400 font-medium">
+            <span className="text-[10px] text-[#A08C81] font-medium">
               +{resume.skills.length - 3}
             </span>
           )}
@@ -73,7 +73,7 @@ export default function AnalysisRow({ resume, onDelete }: AnalysisRowProps) {
       {/* AI Score */}
       <td className="py-3.5 px-4">
         <div className="flex items-center gap-2">
-          <span className={`text-sm font-extrabold ${tier?.color ?? 'text-slate-500'}`}>
+          <span className={`text-sm font-bold ${tier?.color ?? 'text-[#A08C81]'}`}>
             {resume.overallScore != null ? `${resume.overallScore}%` : 'Not analyzed'}
           </span>
           {tier && (
@@ -87,9 +87,7 @@ export default function AnalysisRow({ resume, onDelete }: AnalysisRowProps) {
       {/* Status */}
       <td className="py-3.5 px-4">
         {resume.status === 'parsed' ? (
-          <Badge variant="ai" icon={<Sparkles className="h-3 w-3 text-purple-600" />}>
-            Parsed
-          </Badge>
+          <Badge variant="ai">Parsed</Badge>
         ) : (
           <Badge variant="warning" dot>
             Processing
@@ -98,7 +96,7 @@ export default function AnalysisRow({ resume, onDelete }: AnalysisRowProps) {
       </td>
 
       {/* Date */}
-      <td className="py-3.5 px-4 text-xs text-slate-500 font-medium whitespace-nowrap">
+      <td className="py-3.5 px-4 text-xs text-[#A08C81] font-medium whitespace-nowrap">
         {formatDate(resume.createdAt)}
       </td>
 
@@ -107,7 +105,7 @@ export default function AnalysisRow({ resume, onDelete }: AnalysisRowProps) {
         <div className="flex items-center justify-end gap-1.5 opacity-80 group-hover:opacity-100 transition-opacity">
           <Link to={`/analysis/${resume.id}`}>
             <Button variant="ghost" size="sm" className="h-8 w-8 p-0" title="View Candidate Profile">
-              <Eye className="h-4 w-4 text-slate-600 hover:text-purple-600" />
+              <Eye className="h-4 w-4 text-[#75685F] hover:text-[#8B5E3C]" />
             </Button>
           </Link>
           {onDelete && (

@@ -199,21 +199,23 @@ export default function BatchAnalysis() {
       <div className="mx-auto max-w-7xl space-y-6 pb-10">
         <div className="flex flex-col justify-between gap-4 sm:flex-row sm:items-center">
           <div>
-            <div className="mb-2 flex items-center gap-2 text-sm font-medium text-indigo-600">
+            <div className="mb-2 flex items-center gap-2 text-sm font-medium text-[#6B4632]">
               <Users size={18} />
               Candidate comparison
             </div>
+
             <h1 className="text-3xl font-bold tracking-tight text-slate-900">
               Batch Resume Analysis
             </h1>
+
             <p className="mt-2 max-w-2xl text-sm text-slate-500">
               Compare multiple saved resumes against one job description
               and review the candidates ranked by your analysis backend.
             </p>
           </div>
 
-          <div className="flex items-center gap-2 self-start rounded-xl border border-slate-200 bg-white px-4 py-3">
-            <Users size={20} className="text-indigo-600" />
+          <div className="flex items-center gap-2 self-start rounded-xl border border-[#D8C8BB] bg-white px-4 py-3">
+            <Users size={20} className="text-[#6B4632]" />
             <div>
               <p className="text-lg font-bold text-slate-900">
                 {selectedIds.length} / 50
@@ -257,7 +259,7 @@ export default function BatchAnalysis() {
                   type="button"
                   onClick={toggleFilteredResumes}
                   disabled={loadingResumes || filteredResumes.length === 0}
-                  className="shrink-0 text-sm font-semibold text-indigo-600 hover:text-indigo-800 disabled:opacity-40"
+                  className="shrink-0 text-sm font-semibold text-[#6B4632] hover:text-[#4A3023] disabled:opacity-40"
                 >
                   {allFilteredSelected ? 'Deselect visible' : 'Select visible'}
                 </button>
@@ -268,12 +270,13 @@ export default function BatchAnalysis() {
                   size={18}
                   className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400"
                 />
+
                 <input
                   type="search"
                   value={search}
                   onChange={(event) => setSearch(event.target.value)}
                   placeholder="Search name, filename, email..."
-                  className="w-full rounded-xl border border-slate-200 bg-slate-50 py-3 pl-10 pr-4 text-sm outline-none transition focus:border-indigo-400 focus:bg-white focus:ring-2 focus:ring-indigo-100"
+                  className="w-full rounded-xl border border-slate-200 bg-slate-50 py-3 pl-10 pr-4 text-sm outline-none transition focus:border-[#B89B85] focus:bg-white focus:ring-2 focus:ring-[#E5D8CE]"
                 />
               </div>
             </div>
@@ -290,11 +293,13 @@ export default function BatchAnalysis() {
                     size={32}
                     className="mx-auto mb-3 text-slate-300"
                   />
+
                   <p className="font-medium text-slate-700">
                     {resumes.length === 0
                       ? 'No saved resumes found'
                       : 'No matching resumes'}
                   </p>
+
                   <p className="mt-1 text-sm text-slate-500">
                     {resumes.length === 0
                       ? 'Upload and save resumes before starting a batch.'
@@ -310,8 +315,8 @@ export default function BatchAnalysis() {
                       return (
                         <label
                           key={resume.id}
-                          className={`flex cursor-pointer items-start gap-3 p-4 transition hover:bg-slate-50 ${
-                            selected ? 'bg-indigo-50/60' : ''
+                          className={`flex cursor-pointer items-start gap-3 p-4 transition hover:bg-[#F8F3EE] ${
+                            selected ? 'bg-[#F8F3EE]' : ''
                           }`}
                         >
                           <input
@@ -319,7 +324,7 @@ export default function BatchAnalysis() {
                             checked={selected}
                             onChange={() => toggleResume(resume.id)}
                             disabled={!selected && selectedIds.length >= 50}
-                            className="mt-1 h-4 w-4 rounded border-slate-300 text-indigo-600 focus:ring-indigo-500"
+                            className="mt-1 h-4 w-4 rounded border-slate-300 text-[#8B5E3C] focus:ring-[#8B5E3C]"
                           />
 
                           <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-slate-100 text-slate-600">
@@ -330,9 +335,11 @@ export default function BatchAnalysis() {
                             <p className="truncate text-sm font-semibold text-slate-900">
                               {resume.candidateName || 'Unknown candidate'}
                             </p>
+
                             <p className="mt-1 truncate text-xs text-slate-500">
                               {resume.fileName}
                             </p>
+
                             <p className="mt-1 truncate text-xs text-slate-400">
                               {resume.email || 'No email available'}
                             </p>
@@ -341,7 +348,7 @@ export default function BatchAnalysis() {
                           {selected && (
                             <CheckCircle2
                               size={18}
-                              className="mt-1 shrink-0 text-indigo-600"
+                              className="mt-1 shrink-0 text-[#8B5E3C]"
                             />
                           )}
                         </label>
@@ -353,9 +360,12 @@ export default function BatchAnalysis() {
                     <button
                       type="button"
                       onClick={() => setShowAllResumes((value) => !value)}
-                      className="flex w-full items-center justify-center gap-2 p-4 text-sm font-medium text-indigo-600 hover:bg-slate-50"
+                      className="flex w-full items-center justify-center gap-2 p-4 text-sm font-medium text-[#6B4632] hover:bg-[#F8F3EE]"
                     >
-                      {showAllResumes ? 'Show fewer' : `Show all ${filteredResumes.length} resumes`}
+                      {showAllResumes
+                        ? 'Show fewer'
+                        : `Show all ${filteredResumes.length} resumes`}
+
                       <ChevronDown
                         size={16}
                         className={showAllResumes ? 'rotate-180' : ''}
@@ -368,6 +378,7 @@ export default function BatchAnalysis() {
 
             <div className="flex items-center justify-between border-t border-slate-100 bg-slate-50 px-5 py-3 text-xs text-slate-500">
               <span>{filteredResumes.length} resume(s) shown</span>
+
               <button
                 type="button"
                 onClick={() => setSelectedIds([])}
@@ -384,6 +395,7 @@ export default function BatchAnalysis() {
               <h2 className="text-lg font-semibold text-slate-900">
                 Job description
               </h2>
+
               <p className="mt-1 text-sm text-slate-500">
                 Upload the PDF that all selected resumes will be compared
                 against.
@@ -392,8 +404,8 @@ export default function BatchAnalysis() {
               <label
                 className={`mt-5 flex cursor-pointer flex-col items-center justify-center rounded-xl border-2 border-dashed p-7 text-center transition ${
                   jobDescription
-                    ? 'border-indigo-300 bg-indigo-50/50'
-                    : 'border-slate-200 bg-slate-50 hover:border-indigo-300 hover:bg-indigo-50/30'
+                    ? 'border-[#B89B85] bg-[#F8F3EE]'
+                    : 'border-slate-200 bg-slate-50 hover:border-[#B89B85] hover:bg-[#F8F3EE]'
                 }`}
               >
                 <input
@@ -411,7 +423,7 @@ export default function BatchAnalysis() {
                 />
 
                 {jobDescription ? (
-                  <CheckCircle2 size={32} className="text-indigo-600" />
+                  <CheckCircle2 size={32} className="text-[#8B5E3C]" />
                 ) : (
                   <UploadCloud size={32} className="text-slate-400" />
                 )}
@@ -429,7 +441,7 @@ export default function BatchAnalysis() {
                 </span>
 
                 {!jobDescription && (
-                  <span className="mt-3 text-xs font-medium text-indigo-600">
+                  <span className="mt-3 text-xs font-medium text-[#6B4632]">
                     Browse files
                   </span>
                 )}
@@ -453,6 +465,7 @@ export default function BatchAnalysis() {
                 <p className="text-sm font-semibold text-slate-800">
                   Ready to analyze?
                 </p>
+
                 <ul className="mt-3 space-y-2 text-sm text-slate-600">
                   <li className="flex items-center gap-2">
                     {selectedIds.length > 0 ? (
@@ -462,6 +475,7 @@ export default function BatchAnalysis() {
                     )}
                     {selectedIds.length} resume(s) selected
                   </li>
+
                   <li className="flex items-center gap-2">
                     {jobDescription ? (
                       <CheckCircle2 size={16} className="text-emerald-600" />
@@ -510,10 +524,12 @@ export default function BatchAnalysis() {
                     size={22}
                     className="mt-0.5 shrink-0 text-emerald-600"
                   />
+
                   <div>
                     <h3 className="font-semibold text-emerald-900">
                       Batch #{batch.batch_id} processed
                     </h3>
+
                     <p className="mt-1 text-sm text-emerald-800">
                       {batch.processed_resumes} processed · {batch.failed_resumes}{' '}
                       failed · {batch.total_resumes} total
@@ -532,11 +548,13 @@ export default function BatchAnalysis() {
                 <h2 className="text-xl font-bold text-slate-900">
                   Ranked candidates
                 </h2>
+
                 <p className="mt-1 text-sm text-slate-500">
                   Results returned by the backend for batch #{batch.batch_id}.
                 </p>
               </div>
-              <div className="flex items-center gap-2 rounded-lg bg-indigo-50 px-3 py-2 text-sm font-medium text-indigo-700">
+
+              <div className="flex items-center gap-2 rounded-lg bg-[#F8F3EE] px-3 py-2 text-sm font-medium text-[#6B4632]">
                 <Trophy size={17} />
                 {rankedResults.length} ranked
               </div>
@@ -562,6 +580,7 @@ export default function BatchAnalysis() {
                       </th>
                     </tr>
                   </thead>
+
                   <tbody className="divide-y divide-slate-100">
                     {rankedResults.map((result, index) => (
                       <tr
@@ -572,29 +591,34 @@ export default function BatchAnalysis() {
                           <span
                             className={`inline-flex h-9 w-9 items-center justify-center rounded-full font-bold ${
                               index === 0
-                                ? 'bg-amber-100 text-amber-700'
+                                ? 'bg-[#F1E5DA] text-[#6B4632]'
                                 : 'bg-slate-100 text-slate-600'
                             }`}
                           >
                             {result.rank ?? index + 1}
                           </span>
                         </td>
+
                         <td className="px-5 py-4">
                           <p className="font-semibold text-slate-900">
                             {result.candidate_name || 'Unknown candidate'}
                           </p>
+
                           <p className="mt-1 text-xs text-slate-500">
                             Resume ID: {result.resume_id}
                           </p>
                         </td>
+
                         <td className="max-w-[240px] truncate px-5 py-4 text-slate-600">
                           {result.filename || 'Unknown file'}
                         </td>
+
                         <td className="px-5 py-4 text-right">
                           <span className="text-lg font-bold tabular-nums text-slate-900">
                             {formatScore(result.overall_score)}
                           </span>
                         </td>
+
                         <td className="px-5 py-4 text-right">
                           <span className="inline-flex items-center gap-1.5 rounded-full bg-emerald-50 px-2.5 py-1 text-xs font-semibold text-emerald-700">
                             <CheckCircle2 size={14} />
@@ -614,6 +638,7 @@ export default function BatchAnalysis() {
                   <XCircle size={18} />
                   Failed resumes ({failedResults.length})
                 </h3>
+
                 <div className="mt-3 space-y-3">
                   {failedResults.map((result) => (
                     <div
@@ -621,10 +646,14 @@ export default function BatchAnalysis() {
                       className="rounded-xl border border-red-100 bg-red-50 p-4"
                     >
                       <p className="text-sm font-semibold text-slate-800">
-                        {result.candidate_name || result.filename || `Resume ${result.resume_id}`}
+                        {result.candidate_name ||
+                          result.filename ||
+                          `Resume ${result.resume_id}`}
                       </p>
+
                       <p className="mt-1 text-sm text-red-700">
-                        {result.error_message || 'The backend could not process this resume.'}
+                        {result.error_message ||
+                          'The backend could not process this resume.'}
                       </p>
                     </div>
                   ))}
@@ -637,6 +666,7 @@ export default function BatchAnalysis() {
                 <h3 className="text-base font-semibold text-slate-900">
                   Requirement-level scores
                 </h3>
+
                 <p className="mt-1 text-sm text-slate-500">
                   Expand a candidate to inspect the requirement scores and
                   supporting evidence returned by the API.
@@ -651,12 +681,15 @@ export default function BatchAnalysis() {
                       <summary className="flex cursor-pointer list-none items-center justify-between gap-3 p-4">
                         <div className="min-w-0">
                           <p className="truncate text-sm font-semibold text-slate-900">
-                            #{result.rank ?? '—'} · {result.candidate_name || 'Unknown candidate'}
+                            #{result.rank ?? '—'} ·{' '}
+                            {result.candidate_name || 'Unknown candidate'}
                           </p>
+
                           <p className="mt-1 text-xs text-slate-500">
                             {result.requirements?.length ?? 0} requirement(s) scored
                           </p>
                         </div>
+
                         <ChevronDown
                           size={18}
                           className="shrink-0 text-slate-400 transition group-open:rotate-180"
@@ -678,10 +711,12 @@ export default function BatchAnalysis() {
                                 <p className="text-sm font-medium text-slate-800">
                                   {requirement.requirement}
                                 </p>
-                                <span className="shrink-0 text-sm font-bold text-indigo-700">
+
+                                <span className="shrink-0 text-sm font-bold text-[#6B4632]">
                                   {formatScore(requirement.score)}
                                 </span>
                               </div>
+
                               <p className="mt-1 text-xs text-slate-500">
                                 Match level: {requirement.match_level}
                               </p>
@@ -690,9 +725,10 @@ export default function BatchAnalysis() {
                                 (evidence, evidenceIndex) => (
                                   <blockquote
                                     key={`${evidence.chunk_id}-${evidenceIndex}`}
-                                    className="mt-3 border-l-2 border-indigo-300 pl-3 text-xs leading-5 text-slate-600"
+                                    className="mt-3 border-l-2 border-[#B89B85] pl-3 text-xs leading-5 text-slate-600"
                                   >
                                     <p>{evidence.text}</p>
+
                                     <p className="mt-1 text-slate-400">
                                       {evidence.section} · Similarity:{' '}
                                       {formatScore(evidence.similarity_score)}

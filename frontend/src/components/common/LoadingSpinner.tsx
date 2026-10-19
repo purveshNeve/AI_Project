@@ -5,7 +5,7 @@ export type LoadingSpinnerSize = 'sm' | 'md' | 'lg' | 'xl'
 export interface LoadingSpinnerProps extends HTMLAttributes<HTMLDivElement> {
   size?: LoadingSpinnerSize
   label?: string
-  color?: 'purple' | 'white' | 'indigo'
+  color?: 'brown' | 'white' | 'purple'
 }
 
 const sizeClasses: Record<LoadingSpinnerSize, string> = {
@@ -18,14 +18,14 @@ const sizeClasses: Record<LoadingSpinnerSize, string> = {
 export default function LoadingSpinner({
   size = 'md',
   label = 'Loading',
-  color = 'purple',
+  color = 'brown',
   className = '',
   ...props
 }: LoadingSpinnerProps) {
   const borderColors = {
-    purple: 'border-purple-600/20 border-t-purple-600 border-r-pink-500',
-    white: 'border-white/30 border-t-white border-r-white/80',
-    indigo: 'border-indigo-600/20 border-t-indigo-600 border-r-indigo-400',
+    brown:  'border-[#DED4CA] border-t-[#8B5E3C] border-r-[#A08C81]',
+    white:  'border-white/30 border-t-white border-r-white/80',
+    purple: 'border-[#DED4CA] border-t-[#8B5E3C] border-r-[#A08C81]',
   }
 
   return (

@@ -15,7 +15,9 @@ export default function RiskAnalysis({ signals }: RiskAnalysisProps) {
           <ShieldCheck className="h-5 w-5 text-emerald-600" />
           <h3 className="text-sm font-bold text-slate-900">Career & Risk Scanning</h3>
         </div>
-        <p className="text-xs text-slate-500">No career timeline or credential risk anomalies detected.</p>
+        <p className="text-xs text-slate-500">
+          No career timeline or credential risk anomalies detected.
+        </p>
       </Card>
     )
   }
@@ -24,10 +26,13 @@ export default function RiskAnalysis({ signals }: RiskAnalysisProps) {
     <Card className="p-6 border-slate-200/80">
       <div className="flex items-center justify-between mb-4">
         <h3 className="text-sm font-bold text-slate-900 flex items-center gap-2">
-          <ShieldAlert className="h-4 w-4 text-purple-600" />
+          <ShieldAlert className="h-4 w-4 text-[#6F4E37]" />
           <span>AI Risk & Verification Radar</span>
         </h3>
-        <span className="text-xs font-semibold text-slate-500">{signals.length} Signals Checked</span>
+
+        <span className="text-xs font-semibold text-slate-500">
+          {signals.length} Signals Checked
+        </span>
       </div>
 
       <div className="space-y-3">
@@ -52,11 +57,15 @@ export default function RiskAnalysis({ signals }: RiskAnalysisProps) {
               <div>
                 <div className="flex items-center gap-2">
                   <h4 className="text-xs font-bold">{sig.title}</h4>
+
                   <span className="text-[10px] font-semibold px-2 py-0.2 rounded-full border bg-white/70">
                     {style.label}
                   </span>
                 </div>
-                <p className="text-xs mt-1 leading-relaxed opacity-90">{sig.description}</p>
+
+                <p className="text-xs mt-1 leading-relaxed opacity-90">
+                  {sig.description}
+                </p>
               </div>
             </div>
           )

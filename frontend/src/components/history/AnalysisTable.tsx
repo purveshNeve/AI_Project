@@ -17,7 +17,7 @@ export default function AnalysisTable({ resumes, onDelete }: AnalysisTableProps)
       <EmptyState
         title="No candidate resumes found"
         description="No resumes match your current filter or upload query. Upload a resume to get started."
-        icon={<FileText className="h-10 w-10 text-purple-400" />}
+        icon={<FileText className="h-10 w-10 text-[#A08C81]" />}
         action={
           <Link to="/upload">
             <Button variant="primary" size="md">
@@ -31,11 +31,11 @@ export default function AnalysisTable({ resumes, onDelete }: AnalysisTableProps)
   }
 
   return (
-    <Card className="p-0 border-slate-200/80 overflow-hidden shadow-2xs">
+    <Card className="p-0 border-[#DED4CA] overflow-hidden shadow-xs">
       <div className="overflow-x-auto">
         <table className="w-full text-left border-collapse">
           <thead>
-            <tr className="border-b border-slate-200/80 bg-slate-50/70 text-[11px] font-bold uppercase tracking-wider text-slate-500">
+            <tr className="border-b border-[#DED4CA] bg-[#F7F3EE] text-[10px] font-semibold uppercase tracking-wider text-[#A08C81]">
               <th className="py-3.5 pl-6 pr-4">Candidate & File</th>
               <th className="py-3.5 px-4">Target Job</th>
               <th className="py-3.5 px-4">Top Skills</th>
@@ -45,7 +45,7 @@ export default function AnalysisTable({ resumes, onDelete }: AnalysisTableProps)
               <th className="py-3.5 pr-6 pl-4 text-right">Actions</th>
             </tr>
           </thead>
-          <tbody className="divide-y divide-slate-100 text-xs">
+          <tbody className="divide-y divide-[#EDE6DE] text-xs">
             {resumes.map((resume) => (
               <AnalysisRow key={resume.id} resume={resume} onDelete={onDelete} />
             ))}
