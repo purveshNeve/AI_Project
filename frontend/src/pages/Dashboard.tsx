@@ -24,6 +24,7 @@ export default function Dashboard() {
   const navigate = useNavigate()
   const [stats, setStats] = useState<AnalysisStats | null>(null)
   const [recentResumes, setRecentResumes] = useState<CandidateResume[]>([])
+  const [loadError, setLoadError] = useState('')
 
   useEffect(() => {
     async function loadData() {
@@ -33,6 +34,7 @@ export default function Dashboard() {
         setRecentResumes(data.recentResumes)
       } catch (err) {
         console.error('Failed to load dashboard data', err)
+        setLoadError('Dashboard data could not be loaded. Please refresh to try again.')
       }
     }
     loadData()
@@ -72,7 +74,7 @@ export default function Dashboard() {
               <span>All Resumes</span>
             </Button>
           </Link>
-          <Link to="/upload">
+          <Link to="/new-analysis">
             <Button variant="primary" size="md">
               <Plus className="h-4 w-4" />
               <span>New Analysis</span>
@@ -85,35 +87,26 @@ export default function Dashboard() {
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
         <StatsCard
           title="Total Resumes Parsed"
-          value={stats ? stats.totalResumes.toLocaleString() : '1,248'}
+          value={stats ? stats.totalResumes.toLocaleString() : '—'}
           icon={<FileText className="h-5 w-5" />}
-          trend="+12.4% this mo"
-          trendUp={true}
-          description="Across all job roles"
+          description="Saved resume records"
         />
         <StatsCard
           title="Successfully Parsed"
-          value={stats ? stats.successfullyParsed.toLocaleString() : '1,192'}
+          value={stats ? stats.successfullyParsed.toLocaleString() : '—'}
           icon={<CheckCircle2 className="h-5 w-5" />}
-          trend="98.6% accuracy"
-          trendUp={true}
-          description="High confidence extraction"
+          description="Successfully parsed resumes"
         />
         <StatsCard
           title="Avg. AI Match Score"
-          value={stats ? `${stats.avgMatchScore}%` : '88%'}
+          value={stats?.avgMatchScore != null ? `${stats.avgMatchScore}%` : 'Not analyzed'}
           icon={<Award className="h-5 w-5" />}
-          trend="+4.2% quality"
-          trendUp={true}
-          description="Target skill alignment"
+          description="Scores require a job description"
         />
         <StatsCard
           title="Active Processing"
-          value={stats ? stats.processingCount : '4'}
+          value={stats ? stats.processingCount : '—'}
           icon={<Clock className="h-5 w-5" />}
-          trend="Real-time"
-          trendUp={true}
-          description="Queue running smoothly"
         />
       </div>
 
@@ -121,6 +114,11 @@ export default function Dashboard() {
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
         {/* Left Column: Recent Analysis & Hero Upload Card */}
         <div className="lg:col-span-2 space-y-8">
+          {loadError && (
+            <p role="alert" className="rounded-xl border border-rose-200 bg-rose-50 p-3 text-sm font-medium text-rose-700">
+              {loadError}
+            </p>
+          )}
           <RecentAnalysis resumes={recentResumes} />
 
           {/* Quick Drag & Drop Section */}

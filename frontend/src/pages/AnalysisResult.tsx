@@ -20,7 +20,6 @@ import {
   MapPin,
   Download,
   Trash2,
-  UserCheck,
   Globe
 } from 'lucide-react'
 
@@ -34,13 +33,8 @@ export default function AnalysisResult() {
     async function loadCandidate() {
       setLoading(true)
       try {
-        const found = await analysisService.getResume(id || 'res-101')
-        if (found) {
-          setCandidate(found)
-        } else {
-          const fallback = await analysisService.getResume('res-101')
-          setCandidate(fallback || null)
-        }
+        const found = id ? await analysisService.getResume(id) : undefined
+        setCandidate(found || null)
       } catch (err) {
         console.error('Failed to load candidate', err)
       } finally {
@@ -62,7 +56,7 @@ export default function AnalysisResult() {
       <PageContainer>
         <div className="py-24 text-center">
           <LoadingSpinner size="lg" color="purple" label="Loading candidate intelligence..." />
-          <p className="text-xs text-slate-500 mt-3 font-medium">Fetching candidate AI metrics...</p>
+          <p className="text-xs text-slate-500 mt-3 font-medium">Fetching the saved candidate profile...</p>
         </div>
       </PageContainer>
     )
@@ -147,16 +141,21 @@ export default function AnalysisResult() {
                       {candidate.location}
                     </span>
                     <span>•</span>
-                    <span>{candidate.experienceYears} Years Exp.</span>
+                    <span>
+                      {candidate.experienceYears != null
+                        ? `${candidate.experienceYears} Years Exp.`
+                        : 'Experience not specified'}
+                    </span>
                   </div>
                 </div>
               </div>
 
               <div className="flex sm:flex-col items-center sm:items-end justify-between gap-2 bg-purple-50/60 p-3 rounded-xl border border-purple-100">
-                <span className="text-[11px] font-semibold text-slate-500 uppercase tracking-wider">AI Verified</span>
-                <span className="text-sm font-extrabold text-purple-700 flex items-center gap-1">
-                  <UserCheck className="h-4 w-4 text-purple-600" />
-                  Passed
+                <span className="text-[11px] font-semibold text-slate-500 uppercase tracking-wider">
+                  Resume Status
+                </span>
+                <span className="text-sm font-extrabold text-purple-700">
+                  {candidate.status === 'parsed' ? 'Parsed' : candidate.status}
                 </span>
               </div>
             </div>

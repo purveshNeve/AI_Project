@@ -1,6 +1,7 @@
 import { Routes, Route, Navigate } from 'react-router-dom'
 import Dashboard from '../pages/Dashboard'
 import NewAnalysis from '../pages/NewAnalysis'
+import UploadResume from '../pages/UploadResume'
 import AnalysisProcessing from '../pages/AnalysisProcessing'
 import AnalysisResult from '../pages/AnalysisResult'
 import History from '../pages/History'
@@ -12,7 +13,7 @@ export default function AppRoutes() {
     <Routes>
       <Route path="/" element={<Dashboard />} />
       <Route path="/dashboard" element={<Dashboard />} />
-      <Route path="/upload" element={<NewAnalysis />} />
+      <Route path="/upload" element={<UploadResume />} />
       <Route path="/new-analysis" element={<NewAnalysis />} />
       <Route path="/processing/:id" element={<AnalysisProcessing />} />
       <Route path="/analysis/:id" element={<AnalysisResult />} />

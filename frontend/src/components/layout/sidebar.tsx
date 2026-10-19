@@ -18,7 +18,7 @@ export interface NavItem {
 
 const navItems: NavItem[] = [
   { name: 'Dashboard', path: '/', icon: LayoutDashboard },
-  { name: 'Upload & Parse', path: '/upload', icon: UploadCloud, badge: 'New' },
+  { name: 'Upload & Parse', path: '/new-analysis', icon: UploadCloud, badge: 'New' },
   { name: 'All Resumes', path: '/history', icon: FileText },
   { name: 'Analytics', path: '/analytics', icon: BarChart3 },
   { name: 'Settings', path: '/settings', icon: Settings },

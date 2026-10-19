@@ -32,6 +32,7 @@ export default function ResumeUploader({
   const handleDrop = (e: React.DragEvent) => {
     e.preventDefault()
     setIsDragOver(false)
+    if (isUploading) return
     if (e.dataTransfer.files && e.dataTransfer.files[0]) {
       const file = e.dataTransfer.files[0]
       processFile(file)
@@ -39,6 +40,7 @@ export default function ResumeUploader({
   }
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (isUploading) return
     const file = e.target.files?.[0]
     if (file) processFile(file)
     e.target.value = ''
@@ -77,6 +79,7 @@ export default function ResumeUploader({
         type="file"
         accept={pdfOnly ? '.pdf,application/pdf' : '.pdf,.doc,.docx,.txt'}
         onChange={handleFileChange}
+        disabled={isUploading}
         className="hidden"
       />
 
@@ -106,7 +109,9 @@ export default function ResumeUploader({
               Drop your {pdfOnly ? 'resume PDF' : 'resume file'} here
             </h3>
             <p className="text-sm text-slate-600 mt-1.5 max-w-sm">
-              or click to browse from your computer. Our AI will instantly extract candidate skills, work history, and match scores.
+              or click to browse from your computer. {pdfOnly
+                ? 'Candidate details will be extracted and saved from your resume.'
+                : 'Our AI will extract candidate skills, work history, and match scores.'}
             </p>
 
             <div className="flex items-center gap-2 mt-5">
@@ -157,7 +162,11 @@ export default function ResumeUploader({
 
             <p className="mt-3 flex items-center gap-2 rounded-xl border border-purple-100 bg-purple-50 p-2.5 text-xs font-medium text-purple-700">
               <Sparkles className="h-4 w-4 text-purple-600" />
-              <span>The resume will be uploaded when you submit both files for analysis.</span>
+              <span>
+                {pdfOnly
+                  ? 'The resume is selected and ready to upload.'
+                  : 'The resume will be uploaded when you submit both files for analysis.'}
+              </span>
             </p>
           </div>
         )}
@@ -176,7 +185,7 @@ export default function ResumeUploader({
         </span>
         <span className="flex items-center gap-1.5">
           <Sparkles className="h-4 w-4 text-purple-600" />
-          AI Skill Scoring Engine
+          {pdfOnly ? 'AI Resume Parsing' : 'AI Skill Scoring Engine'}
         </span>
       </div>
     </div>

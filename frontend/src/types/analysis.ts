@@ -5,7 +5,7 @@ export interface AnalysisStats {
   successfullyParsed: number
   processingCount: number
   failedCount: number
-  avgMatchScore: number
+  avgMatchScore: number | null
   accuracyRate: number
   topSkills: { name: string; count: number; percentage: number }[]
 }

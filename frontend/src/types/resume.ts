@@ -42,15 +42,15 @@ export interface CandidateResume {
   skills: string[]
   matchedSkills: string[]
   missingSkills: string[]
-  experienceYears: number
-  overallScore: number // 0-100 AI Match Score
+  experienceYears?: number
+  overallScore?: number // 0-100 AI Match Score
   status: ParsingStatus
   createdAt: string
   workHistory: WorkExperience[]
   education: Education[]
   riskSignals: RiskSignal[]
   aiInsights: string[]
-  confidenceScore: number // e.g. 96%
+  confidenceScore?: number // e.g. 96%
 }
 
 export interface JobTarget {

@@ -18,9 +18,9 @@ export default function RecentAnalysis({ resumes }: RecentAnalysisProps) {
         <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-purple-50 text-purple-600 mx-auto mb-3">
           <FileText className="h-6 w-6" />
         </div>
-        <h3 className="text-base font-semibold text-slate-900">No resumes analyzed yet</h3>
+        <h3 className="text-base font-semibold text-slate-900">No resumes uploaded yet</h3>
         <p className="text-xs text-slate-600 mt-1 max-w-sm mx-auto">
-          Upload your first candidate resume to automatically extract skills, work history, and AI match scores.
+          Upload a candidate resume to extract and save skills, work history, and other profile details.
         </p>
         <Link to="/upload" className="inline-block mt-4">
           <Button variant="primary" size="sm">
@@ -39,7 +39,7 @@ export default function RecentAnalysis({ resumes }: RecentAnalysisProps) {
             <span>Recent Candidate Intelligence</span>
             <span className="flex h-2 w-2 rounded-full bg-purple-600" />
           </h2>
-          <p className="text-xs text-slate-600 mt-0.5">Latest AI-parsed candidate profiles and skill match scores</p>
+          <p className="text-xs text-slate-600 mt-0.5">Latest saved candidate profiles and extracted skills</p>
         </div>
         <Link to="/history">
           <Button variant="ghost" size="sm" className="text-xs gap-1">
@@ -51,7 +51,7 @@ export default function RecentAnalysis({ resumes }: RecentAnalysisProps) {
 
       <div className="divide-y divide-slate-100">
         {resumes.map((resume) => {
-          const tier = formatScoreTier(resume.overallScore)
+          const tier = resume.overallScore != null ? formatScoreTier(resume.overallScore) : null
           const isProcessing = resume.status === 'processing'
 
           return (
@@ -90,7 +90,9 @@ export default function RecentAnalysis({ resumes }: RecentAnalysisProps) {
                   </div>
 
                   <div className="text-xs text-slate-600 font-medium mt-0.5">
-                    {resume.jobTitle} • {resume.experienceYears} yrs exp
+                    {resume.jobTitle} • {resume.experienceYears != null
+                      ? `${resume.experienceYears} yrs exp`
+                      : 'Experience not specified'}
                   </div>
 
                   {/* Skills Pills */}
@@ -116,8 +118,8 @@ export default function RecentAnalysis({ resumes }: RecentAnalysisProps) {
               <div className="flex items-center sm:flex-col sm:items-end justify-between gap-2 border-t border-slate-100 sm:border-0 pt-2 sm:pt-0">
                 <div className="flex items-center gap-2">
                   <span className="text-xs text-slate-600 font-medium">AI Match</span>
-                  <span className={`text-base font-extrabold ${tier.color}`}>
-                    {resume.overallScore}%
+                  <span className={`text-base font-extrabold ${tier?.color ?? 'text-slate-500'}`}>
+                    {resume.overallScore != null ? `${resume.overallScore}%` : 'Not analyzed'}
                   </span>
                 </div>
 

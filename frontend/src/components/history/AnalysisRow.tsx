@@ -12,7 +12,7 @@ export interface AnalysisRowProps {
 }
 
 export default function AnalysisRow({ resume, onDelete }: AnalysisRowProps) {
-  const tier = formatScoreTier(resume.overallScore)
+  const tier = resume.overallScore != null ? formatScoreTier(resume.overallScore) : null
 
   return (
     <tr className="border-b border-slate-100 hover:bg-purple-50/20 transition-colors group">
@@ -44,7 +44,11 @@ export default function AnalysisRow({ resume, onDelete }: AnalysisRowProps) {
       {/* Target Job Title */}
       <td className="py-3.5 px-4 text-xs font-medium text-slate-700">
         <div>{resume.jobTitle}</div>
-        <div className="text-[11px] text-slate-400">{resume.experienceYears} Yrs Experience</div>
+        <div className="text-[11px] text-slate-400">
+          {resume.experienceYears != null
+            ? `${resume.experienceYears} Yrs Experience`
+            : 'Experience not specified'}
+        </div>
       </td>
 
       {/* Extracted Skills */}
@@ -69,12 +73,14 @@ export default function AnalysisRow({ resume, onDelete }: AnalysisRowProps) {
       {/* AI Score */}
       <td className="py-3.5 px-4">
         <div className="flex items-center gap-2">
-          <span className={`text-sm font-extrabold ${tier.color}`}>
-            {resume.overallScore}%
+          <span className={`text-sm font-extrabold ${tier?.color ?? 'text-slate-500'}`}>
+            {resume.overallScore != null ? `${resume.overallScore}%` : 'Not analyzed'}
           </span>
-          <Badge variant={tier.badgeVariant} className="text-[10px]">
-            {tier.label}
-          </Badge>
+          {tier && (
+            <Badge variant={tier.badgeVariant} className="text-[10px]">
+              {tier.label}
+            </Badge>
+          )}
         </div>
       </td>
 
