@@ -3,6 +3,7 @@ from app.api.routes.analysis import router as analysis_router
 from app.api.routes import db_test
 from app.api.routes.resumes import router as resumes_router
 from fastapi.middleware.cors import CORSMiddleware
+from app.api.routes.batches import router as batches_router
 app = FastAPI(
     title="Resume Risk Analyzer API",
     version="1.0.0"
@@ -20,7 +21,7 @@ app.add_middleware(
 app.include_router(db_test.router, prefix="/api")
 app.include_router(analysis_router, prefix="/api")
 app.include_router(resumes_router, prefix="/api")
-
+app.include_router(batches_router, prefix="/api")
 @app.get("/")
 def health_check():
     return {

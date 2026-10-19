@@ -6,7 +6,8 @@ import {
   BarChart3,
   Settings,
   BrainCircuit,
-  ChevronRight
+  ChevronRight,
+  Users,
 } from 'lucide-react'
 
 export interface NavItem {
@@ -19,6 +20,7 @@ export interface NavItem {
 const navItems: NavItem[] = [
   { name: 'Dashboard', path: '/', icon: LayoutDashboard },
   { name: 'Upload & Parse', path: '/new-analysis', icon: UploadCloud, badge: 'New' },
+  { name: 'Batch Analysis', path: '/batch-analysis', icon: Users },
   { name: 'All Resumes', path: '/history', icon: FileText },
   { name: 'Analytics', path: '/analytics', icon: BarChart3 },
   { name: 'Settings', path: '/settings', icon: Settings },

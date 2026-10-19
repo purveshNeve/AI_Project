@@ -88,14 +88,15 @@ def retrieve_relevant_chunks(
             f"got {len(query_embedding)}."
         )
 
+    candidate_k = min(max(top_k * 5, 25), 100)
     query = (
         Query(
-            f"(@resume_id:{resume_id})=>"
-            f"[KNN {min(top_k, 5)} @embedding $query_vector AS distance]"
+            f'(@resume_id:"{resume_id}")=>'
+            f"[KNN {candidate_k} @embedding $query_vector AS distance]"
         )
         .sort_by("distance")
         .return_fields("chunk_id", "text", "section", "distance")
-        .paging(0, min(top_k, 5))
+        .paging(0, candidate_k)
         .dialect(2)
     )
     results = redis_client.ft(INDEX_NAME).search(

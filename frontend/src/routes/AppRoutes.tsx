@@ -7,7 +7,7 @@ import AnalysisResult from '../pages/AnalysisResult'
 import History from '../pages/History'
 import Analytics from '../pages/Analytics'
 import Settings from '../pages/Settings'
-
+import BatchAnalysis from '../pages/BatchAnalysis'
 export default function AppRoutes() {
   return (
     <Routes>
@@ -21,6 +21,7 @@ export default function AppRoutes() {
       <Route path="/resumes" element={<History />} />
       <Route path="/analytics" element={<Analytics />} />
       <Route path="/settings" element={<Settings />} />
+      <Route path="/batch-analysis" element={<BatchAnalysis />} />
       <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>
   )
